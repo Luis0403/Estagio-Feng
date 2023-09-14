@@ -1,0 +1,16 @@
+#btnsalvar{
+    background-color: #166d3c;
+    border:#166d3c;
+    color: white;
+}
+#btnsalvar:hover{
+    background-color: #085e2d;
+}
+
+body{
+    background-image: url('/src/assets/img/Python_for_Secret_Agents.JPG');
+    /* background-size: cover;
+    background-attachment:fixed;
+    background-color: rgba(0, 0, 0, 0.774);
+    background-blend-mode:darken; */
+}

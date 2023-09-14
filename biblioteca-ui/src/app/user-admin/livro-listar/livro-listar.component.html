@@ -1,0 +1,6 @@
+<app-menu-lateral [hidden]="!menuAjustado"></app-menu-lateral>
+
+<div [class.content-page-container-full] =  "!menuAjustado" [class.content-page-container] =  "menuAjustado">
+  <app-header-logado (menuClicado)="aoClicar($event)"></app-header-logado>
+  <app-livro-perquisa></app-livro-perquisa>
+</div>

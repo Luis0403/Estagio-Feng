@@ -1,0 +1,6 @@
+Cany: Entity LIvro e User Migracao 1 e 2
+Luis: Entity Estudante  migracao 3
+Denilson: Professor migracao 4
+Mariamo: Gestor migracao 5
+
+NOTA: As chaves(codigo PRimary Key) devem ter tamanho 20 para todas entidades

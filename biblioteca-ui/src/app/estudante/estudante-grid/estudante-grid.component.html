@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="col-12" style="margin-top: 3%;">
+        <h1>Lista de Estudantes</h1>
+    </div>
+    
+        <!-- criacao databela -->
+        <div class="col-12" >
+        <p-table [columns]="cols" [value]="estudante" responsiveLayout="scroll"[paginator]="true" [rows]="4"
+        [globalFilterFields]="['nome','celular','curso','numeroBi']" #pesquisa
+        >
+
+               
+        <ng-template pTemplate="caption">
+            <div class="col-12">
+                <span class="p-input-icon-right">
+                    <i class="pi pi-filter" icon></i>
+                    <input  type="text" name="pesquisa" pInputText placeholder="pesquise...." 
+                    ngModel #pesqui="ngModel" 
+                    (input)="pesquisa.filterGlobal($any($event).target.value,'contains')"
+                    pTooltip="Pesquise o estudante pelo nome, Numero de BI, Celular" 
+                   tooltipPosition="top"
+                  />
+                </span>
+            </div>
+        </ng-template>
+
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns">
+                        {{col.header}}
+                    </th>
+                    <th style="width: 50px;">Accao</th>
+                </tr>
+
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr>
+                    <td *ngFor="let col of columns">
+                        {{rowData[col.field]}}
+                    </td>
+                    <td>
+                        <span >
+                            <button [disabled]="true" icon="pi pi-trash" pButton style="background-color: rgb(196, 43, 43)" pTooltip="Apagar" tooltipPosition="top"></button>
+                        </span>
+                        <!-- <span style="margin-left: 2%;">
+                            <button [disabled]="true" icon="pi pi-pencil" pButton style="background-color: rgb(43, 104, 196)" pTooltip="Editar" tooltipPosition="top"></button>
+                        </span> -->
+                    </td>
+
+
+
+                </tr>
+            </ng-template>
+        </p-table>
+
+    </div>
+
+  </div>

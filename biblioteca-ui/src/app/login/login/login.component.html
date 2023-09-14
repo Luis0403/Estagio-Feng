@@ -1,0 +1,37 @@
+
+
+        <p-dialog [visible]="true"  *ngIf="servicos.openBtnLogin" [closable]="false" [responsive]="true" (close)="closePop($event)">
+            <ng-template pTemplate="content"  >
+                
+                <form #formulario="ngForm" ngForm   (submit)="login(formulario)" >
+                    <div class="p-formgrid p-grid" style="display: flex; flex-direction: column; ">
+                       
+                        
+                        <div style="text-align:center;">
+                            <img src="assets/img/logo.png" alt="" style="width: 100px;height:100px">
+                        
+                            <h4>Nao tens conta? <a routerLink="estudante/cadastro" (click)="closeLogin()">Criar conta</a></h4>
+                        </div>
+
+                        <h1 style="text-align:center">LOGIN</h1>
+                        <p style="color: red;" *ngIf="servicos.dados_invalidos" >Username ou password invalido!</p>
+                        <div class="p-field p-col" style="text-align:center;">
+                            <input type="text" pInputText id="username" [autocomplete]="true" placeholder="username ou email..." ngModel name="username" [required]="true"/>
+                        </div>
+                        <div class="p-field p-col" style="text-align:center; margin-top: 5%;">
+                            <input type="password" pPassword placeholder="password..." ngModel name="password" [required]="true"  [autocomplete]="true"/>
+                        </div>
+                        <div class="p-field p-col" style="text-align:center; margin-top: 5%;"  >
+                            <button pButton type="submit" label="Entrar" id="btEntar" class="bt-ent" [disabled]="formulario.invalid"></button>
+                        </div>
+                        
+                    </div> 
+                </form>   
+            </ng-template>
+
+            <ng-template pTemplate="footer" class="futa">
+                <button pButton pRipple label="Cancelar"  class="p-button-text" id="futa"  (click)="closeLogin()"></button>
+                <a pButton pRipple label="Esqueci password"  class="p-button-text" id="futa" routerLink="login/resetpass/send_email" (click)="closeLogin()"></a>
+                
+            </ng-template>
+        </p-dialog>

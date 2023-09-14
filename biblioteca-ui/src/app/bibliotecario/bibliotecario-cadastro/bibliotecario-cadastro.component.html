@@ -1,0 +1,53 @@
+<form #f="ngForm" class="container" ngForm (submit)="criarBibliotecario(f)">
+    <div class="grid">
+      <div class="col-12" style="margin-top: 3%;">
+        <h1>Novo Bibliotecario</h1>
+      </div>
+        <div class="col-12 md:col-6 p-fluid">
+            <label for=""> Nome</label>
+            <input placeholder="Insira o nome " type="text" pInputText [required]="true" #nome = "ngModel" ngModel name="nome">
+            <app-mensagem-erro [control] = "$any(nome)" error="required" text="Informe o nome" ></app-mensagem-erro>
+          </div>
+          <div class="col-12 md:col-3 p-fluid">
+            <label for=""> Sexo</label>
+            <p-dropdown placeholder="Selecione" [required]="true" [options]="genero" ngModel name="sexo" #sex="ngModel"></p-dropdown>
+
+            <!-- <p-dropdown placeholder="Selecione" [required]="true" [options]="genero" ngModel name="sexo" #sexo="ngModel"></p-dropdown> -->
+          </div>
+          <div class="col-12 md:col-3 p-fluid">
+            <label for=""> Data de Nascimento </label>
+            <p-calendar  dateFormat="yy-mm-d" placeholder="Exemplo: 1980-03-03" [required]="true"  [showIcon]="true" inputId="icon" name="dataNascimento" #dataNascimento="ngModel" ngModel></p-calendar>
+            <app-mensagem-erro [control] = "$any(dataNascimento)" error="required" text="Informe a data de nascimento" ></app-mensagem-erro>
+          </div>
+          <div class="col-12 md:col-4 p-fluid">
+            <label for=""> Numero de BI</label>
+            <input type="text" pInputText ngModel name="numeroBi" #numeroBi="ngModel"  [required]="true" >
+            <app-mensagem-erro [control] = "$any(numeroBi)" error="required" text="Informe o numero de BI" ></app-mensagem-erro>
+          </div>
+          <div class="col-12 md:col-6 p-fluid">
+            <label for=""> Celular</label>
+            <input type="number" pInputText name="celular" ngModel #celular="ngModel"  [required]="true" >
+            <app-mensagem-erro [control] = "$any(celular)" error="required" text="Informe o numero do celular" ></app-mensagem-erro>
+          </div>
+        <div class="col-12 md:col-4 p-fluid">
+            <label for=""> E-mail</label>
+            <input type="text" placeholder="email" [required]="true" pInputText ngModel name="email" #email="ngModel" email/>
+            <app-mensagem-erro [control] = "$any(email)" error="required" text="Informe o email" ></app-mensagem-erro>
+          </div>
+          <div class="col-12 md:col-4 p-fluid">
+            <label for=""> Username </label>
+            <input type="text" placeholder="username" [required]="true" pInputText ngModel name="username" #user="ngModel"/>
+            <app-mensagem-erro [control] = "$any(user)" error="required" text="Informe o username" ></app-mensagem-erro>
+          </div>
+    
+          <div class="col-12 md:col-4 p-fluid">
+            <label for=""> Password </label>
+            <p-password  [toggleMask]="true"  placeholder="Password" [required]="true" ngModel name="password" #pass="ngModel"></p-password>
+            <app-mensagem-erro [control] = "$any(pass)" error="required" text="Informe o password" ></app-mensagem-erro>
+          </div>
+    
+          <div class="col-12 " >
+            <button type="submit"  label="salvar" id="btnsalvar" class="bt-ent" pButton [disabled]="f.invalid" ></button>
+          </div>
+    </div>
+</form>

@@ -1,0 +1,21 @@
+
+h4 a{
+    color: #166d3c;
+}
+
+#btEntar{
+    background-color: #166d3c;
+    border:#166d3c;
+    color: white;
+}
+#btEntar:hover{
+    background-color: #085e2d;
+}
+
+#futa{
+    color: #166d3c;
+}
+
+#futa:hover{
+    background-color: #79dba3;
+}

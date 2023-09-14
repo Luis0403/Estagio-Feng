@@ -1,0 +1,82 @@
+<div class="container">
+    <div class="col-12" style="margin-top: 3%;">
+        <h1>Lista de Bibliotecarios</h1>
+    </div>
+        <!-- campos de filtro     -->
+        <!-- <div class="col-12">
+        <form  #pesquisa="ngForm" ngForm  class="grid">
+            
+            <div class="col-12 md:col-4 p-fluid" >
+                <span class="p-input-icon-right">
+                    <i class="pi pi-filter" icon></i>
+                    <input  type="text" name="nome" pInputText placeholder="nome" ngModel #nome="ngModel" />
+                </span>
+            </div>
+
+            <div class="col-12 md:col-4 p-fluid" >
+                <span class="p-input-icon-right">
+                    <i class="pi pi-filter" icon></i>
+                    <input  type="text" name="email" pInputText placeholder="email" ngModel #email="ngModel" />
+                </span>
+            </div>
+
+            <div class="col-12 md:col-4 p-fluid" >
+                <button type="submit" id="btnsalvar" pTooltip="Clique para pesquisar" tooltipPosition="right" label="Pesquisar" icon="pi pi-search" iconPos="right" label="pesquisar"  class="bt-ent" pButton [disabled]="pesquisa.invalid" ></button>;
+            </div>
+        </form>
+        </div> -->
+        <!-- criacao databela -->
+        <div class="col-12" >
+        <p-table [columns]="cols" [value]="Bibliotecario" responsiveLayout="scroll" [paginator]="true" [rows]="4"
+        [globalFilterFields]="['nome','celular']" #pesquisa
+        >
+
+        [globalFilterFields]="['nome','celular']" #pesquisa    
+        <ng-template pTemplate="caption">
+            <div class="col-12">
+                <span class="p-input-icon-right">
+                    <i class="pi pi-filter" icon></i>
+                    <input  type="text" name="pesquisa" pInputText placeholder="pesquise...." 
+                    ngModel #pesqui="ngModel" (input)="pesquisa.filterGlobal($any($event).target.value,'contains')"
+                    pTooltip="Pesquise o bibliotecario pelo nome, Numero de BI, Celular" 
+                   tooltipPosition="bottom"
+                    />
+                </span>
+            </div>
+        </ng-template>
+
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns">
+                        {{col.header}}
+                    </th>
+                    <th style="width: 50px;">Accao</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr>
+                    <td *ngFor="let col of columns">
+                        {{rowData[col.field]}}
+                    </td>
+                    <td>
+                        <span >
+                            <button [disabled]="true" icon="pi pi-trash" pButton style="background-color: rgb(196, 43, 43)" pTooltip="Apagar" tooltipPosition="top"></button>
+                        </span>
+                        
+                     </td>
+
+
+
+                </tr>
+            </ng-template>
+        </p-table> 
+
+    </div>
+
+  </div>
+
+
+
+  <!-- <span style="margin-left: 2%;">
+                            <button [disabled]="true" icon="pi pi-pencil" pButton style="background-color: rgb(43, 104, 196)" pTooltip="Editar" tooltipPosition="top"></button>
+                        </span> -->

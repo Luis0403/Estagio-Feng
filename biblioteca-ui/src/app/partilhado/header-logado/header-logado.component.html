@@ -1,0 +1,68 @@
+<nav class="navbarTop">
+  <div class="container">
+    <div class="grid">
+
+      <div class="col-12">
+        <a *ngIf="!isRole_Estudante" href="javascrip:;" (click)="aoClicarMenu()"><i class="pi pi-bars direita"></i></a>
+        
+        <span *ngIf="isRole_Estudante">
+          <img style="width: 75px;" src="assets/img/logo.png" alt="">
+        </span>
+
+            <!-- routerLink="/login/nova_senha" -->
+        <div class="itens">
+          <button pButton pRipple type="button" 
+            pTooltip="Alterar Senha" 
+            icon="pi pi-pencil"
+            class="p-button-rounded p-button-text"
+            (click)="trocarPassword('open')"
+            ></button>
+          <button pButton pRipple type="button" 
+               pTooltip="Sair" icon="pi pi-power-off" 
+              class="p-button-rounded p-button-danger p-button-text"
+              (click)="sair()"
+          ></button>
+          <p>{{username}}</p>
+          <button style = "margin-left: 5px;" pButton pRipple type="button" icon="pi pi-user" class="p-button-rounded p-button-secondary"></button>
+
+        </div>
+
+
+      </div>
+    </div>
+
+  </div>
+
+
+</nav>
+
+
+<p-dialog [visible]="trocarPass" [responsive]="true" [closable]="false">
+  <ng-template pTemplate="content"  >
+      
+      <form #formulario="ngForm" ngForm  class="grid login" >
+        <div class="p-formgrid p-grid" style="display: flex; flex-direction: column; ">      
+              <div style="text-align:center;">
+                  <img src="assets/img/logo.png" alt="" style="width: 100px;height:100px">
+              
+              </div>
+                  <p *ngIf="dadosIncorrectos" style="color: red;">Escreva a mesma password para ambos campos!</p>
+                  <div class="p-field p-col" style="text-align:center; margin-top: 8%;">
+                      <p-password  [toggleMask]="true"  placeholder="nova password" [required]="true" ngModel name="password" #password="ngModel"></p-password>
+                   </div>
+                   <div class="p-field p-col" style="text-align:center; margin-top: 8%;">
+                      <p-password  [toggleMask]="true"  placeholder="confirmar password" [required]="true" ngModel name="nova_password" #pass_nova="ngModel"></p-password>
+                   </div>
+          
+                   <!--  -->
+          </div>          
+      </form>   
+
+      <div  class="btnEntrar" style="text-align:center; margin-top: 5%;">
+        <button  pButton pRipple id="btEntar"  label="Cancelar" (click)="trocarPassword('close')" ></button>&nbsp;&nbsp;
+          <button  pButton pRipple id="btEntar" type="submit" label="Enviar" [disabled]="formulario.invalid" (click)="verificarPassword(formulario.value.password,formulario.value.nova_password)" ></button>
+      </div>
+  </ng-template>
+</p-dialog>
+
+

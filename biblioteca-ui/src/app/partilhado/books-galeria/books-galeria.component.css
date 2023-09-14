@@ -1,0 +1,39 @@
+span{
+    top: 1%;
+}
+h3{
+    color: white;
+}
+
+#btEntar{
+    background-color: #166d3c;
+    border:#166d3c;
+    color: white;
+    margin-bottom: 3%;
+}
+
+::placeholder{
+    color: black;
+}
+
+img{
+    cursor: pointeri;
+}
+
+img:hover{
+   box-shadow: 0 0 4px 4px;;
+}
+
+#btEntar:hover{
+    background-color: #053d19;
+}
+
+@media (max-width:799px) {
+    .grid{
+        margin: 5% 15% 2% 15%;
+    }
+
+    img{
+        height: 300px
+    }
+}

@@ -1,0 +1,75 @@
+<div class="container">
+    <form #formulario="ngForm" ngForm class="col-12" (submit)="salvar(formulario)">
+        <div class="container">
+          <div class="grid">
+            <div class="col-12" style="margin-top: 3%;">
+              <h1>{{title}} Conta</h1>
+            </div>
+            <div class="col-12 md:col-6 p-fluid">
+              <label for=""> Nome</label>
+              <input placeholder="Insira o nome " type="text" pInputText [required]="true" ngModel name="nome" #nome="ngModel">
+              <app-mensagem-erro [control] = "$any(nome)" error="required" text="Informe o nome" ></app-mensagem-erro>
+            </div>
+            <div class="col-12 md:col-3 p-fluid">
+              <label for=""> Sexo</label>
+              <p-dropdown placeholder="Selecione" [required]="true" [options]="sexo" ngModel name="sexo" #sex="ngModel"></p-dropdown>
+              <app-mensagem-erro [control] = "$any(sex)" error="required" text="Informe o sexo" ></app-mensagem-erro>
+            </div>
+            <div class="col-12 md:col-3 p-fluid">
+              <label for=""> Data de Nascimento </label>
+              <p-calendar placeholder="Exemplo: 19/12/1980"  [required]="true" [showIcon]="true" inputId="icon" name="dataNascimento" dataNas="ngModel" ngModel #dast="ngModel"></p-calendar>
+              <app-mensagem-erro [control] = "$any(dast)" error="required" text="Informe a data de nascimento" ></app-mensagem-erro>
+            </div>
+            <div class="col-12 md:col-4 p-fluid">
+              <label for=""> Numero de BI</label>
+              <input type="text" pInputText ngModel name="numeroBi" placeholder="numero de BI" #numeroBI="ngModel" [required]="true">
+              <app-mensagem-erro [control] = "$any(numeroBI)" error="required" text="Informe o nr de bi" ></app-mensagem-erro>
+            </div>
+            <div class="col-12 md:col-4 p-fluid">
+              <label for=""> Curso</label>
+              <input type="text" pInputText ngModel name="curso" placeholder="curso" #curso="ngModel" [required]="true" >
+              <app-mensagem-erro [control] = "$any(curso)" error="required" text="Informe o curso" ></app-mensagem-erro>
+            </div>
+
+            <div class="col-12 md:col-4 p-fluid">
+              <label for=""> Instituicao de Ensino</label>
+              <input type="text" placeholder="instiuicao de ensino" pInputText name="instiuicaoEnsino" ngModel #inst="ngModel" [required]="true">
+              <app-mensagem-erro [control] = "$any(inst)" error="required" text="Informe a instituicao de ensino" ></app-mensagem-erro>
+            </div>
+
+
+            <div class="col-12 md:col-3 p-fluid">
+              <label for=""> Celular</label>
+              <input type="number" pInputText name="celular"placeholder="celular" ngModel #cel="ngModel" [required]="true">
+              <app-mensagem-erro [control] = "$any(cel)" error="required" text="Informe o nr de celular" ></app-mensagem-erro>
+            </div>
+
+            <div class="col-12 md:col-4 p-fluid">
+                <label for=""> E-mail</label>
+                <input type="text" placeholder="email" [required]="true" pInputText ngModel name="email" #email="ngModel" email/>
+                <app-mensagem-erro [control] = "$any(email)" error="required" text="Informe o email" ></app-mensagem-erro>
+              </div>
+              <div class="col-12 md:col-4 p-fluid">
+                <label for=""> Username </label>
+                <input type="text" placeholder="username" [required]="true" pInputText ngModel name="username" #user="ngModel"/>
+                <app-mensagem-erro [control] = "$any(user)" error="required" text="Informe o username" ></app-mensagem-erro>
+              </div>
+
+              <div class="col-12 md:col-4 p-fluid">
+                <label for=""> Password </label>
+                <p-password  [toggleMask]="true"  placeholder="Password" [required]="true" ngModel name="password" #pass="ngModel"></p-password>
+                <app-mensagem-erro [control] = "$any(pass)" error="required" text="Informe o password" ></app-mensagem-erro>
+              </div>
+
+            <div class="col-12 " >
+              <button type="submit"  label="salvar" id="btnsalvar" class="bt-ent" pButton [disabled]="formulario.invalid" ></button>
+        
+            </div>
+
+
+
+          </div>
+
+        </div>
+      </form>
+    </div>

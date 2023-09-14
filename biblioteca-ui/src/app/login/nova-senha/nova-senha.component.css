@@ -1,0 +1,27 @@
+
+img{
+    width: 70px;
+    height: 700px;
+}
+
+
+
+p{
+    text-align:start;
+    margin-left: 21%;
+    color: white;
+}
+
+.btnEntrar button{
+    background-color: #166d3c;
+    color: white;
+    border: #166d3c;
+}
+
+.btnEntrar button:hover{
+    background-color: #0d4d28;
+}
+
+form{
+    margin-top: 10%;
+}

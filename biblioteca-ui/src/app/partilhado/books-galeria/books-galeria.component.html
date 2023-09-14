@@ -1,0 +1,156 @@
+<app-headerhome-nao-logado *ngIf="!logado"></app-headerhome-nao-logado>
+<app-header-logado *ngIf="logado"></app-header-logado>
+<div class="container">
+
+    <div class="col-12">
+            <form  #pesquisaField="ngForm" ngForm  class="grid" style="margin-top: 5%;" (submit)="search(pesquisaField)">
+            
+                <div class="col-12 md:col-9 p-fluid" >
+                    <span class="p-input-icon-right">
+                        <i class="pi pi-filter" icon></i>
+                        <input  type="text" name="pesquisa" pInputText 
+                        placeholder="Pesquise Pelo Titulo, Autor ou Area do Conhecimento" 
+                        ngModel #pesquisa="ngModel" 
+                        [required]="true"
+                        />
+                    </span>
+                </div>    
+                <div class="col-12 md:col-3 p-fluid" >
+                    <button type="submit" id="btEntar" label="Pesquisar" icon="pi pi-search" iconPos="right" label="pesquisar"  class="bt-ent" pButton [disabled]="pesquisaField.invalid" ></button>;
+                </div>
+                
+            </form>
+    </div>
+  
+    <div class="col-12">
+        
+        <p *ngIf="isfileNotFound" style="color: white;">Nao Foi Encontrado o livro para a pesquisa que efectou</p>
+        
+        <p-table *ngIf="isfileFound" [columns]="cols" [value]="livros" responsiveLayout="scroll"[paginator]="true" [rows]="3"
+           
+            [globalFilterFields]="['titulo','autor','editora','areaConhecimento','disciplina']" #pesquisa_naTable
+        >
+
+            
+            <ng-template pTemplate="caption">
+                <div class="col-12">
+                    <span class="p-input-icon-right">
+                        <i class="pi pi-filter" icon></i>
+                        <input  type="text" name="pesquisa" pInputText placeholder="pesquise...." 
+                        ngModel #pesqui="ngModel" 
+                        (input)="pesquisa_naTable.filterGlobal($any($event).target.value,'contains')"
+                        pTooltip="Pesquise o livro por autor,editora, titulo ou disciplina" 
+                        tooltipPosition="right"
+                        />
+                    </span>
+                </div> 
+            </ng-template>
+
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns">
+                        {{col.header}}
+                    </th>
+                    <th>Accao</th>
+                </tr>
+
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr>
+                    <td *ngFor="let col of columns">
+                        {{rowData[col.field]}}
+                    </td>
+                    <td>
+                        <button pButton pRipple 
+                            (click)="downloadLivro(livros.titulo)"
+                            type="button" 
+                            icon="pi pi-download" 
+                            class="p-button-rounded p-button-success" 
+                            pTooltip="Clique para Baixar este livro" 
+                            tooltipPosition="right">
+                        </button>
+                        <button (click)="lerLivro(livros.titulo)"
+                            style="margin-left: 5px;" 
+                            pButton pRipple type="button" 
+                            icon="pi pi-eye" 
+                            class="p-button-rounded p-button-warning" 
+                            pTooltip="Clique para ver este livro"
+                            tooltipPosition="right">
+                    </button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+  
+    
+    
+    <!-- para galeria de livro -->
+    <div  class="grid" style="justify-content: space-between;margin-top: 5%; ">
+
+         <div  class="col-12 md:col-4 p-fluid" *ngFor="let fotos of imagens"  > 
+            <img width="100%" height="500px" src={{fotos.src}} alt="" style="margin-top: 5%;">
+            <span >
+                <button pButton pRipple 
+               
+                type="button" 
+                icon="pi pi-download" 
+                class="p-button-rounded p-button-success" 
+                pTooltip="Clique para Baixar este livro" 
+                tooltipPosition="right"
+                id="download"
+                (click)="downloadLivro(fotos.src.substring(12,fotos.src.length-4)+'.pdf')">
+              </button>
+              <button 
+                style="margin-left: 5px;" 
+                pButton pRipple type="button" 
+                icon="pi pi-eye" 
+                class="p-button-rounded p-button-warning" 
+                pTooltip="Clique para ver este livro"
+                tooltipPosition="right"
+                id="verLivro"
+                (click)="lerLivro(fotos.src.substring(12,fotos.src.length-4)+'.pdf')">
+              </button>
+            </span>
+        </div>
+
+    </div>
+    <div class="grid">        
+        <h3 style="margin-top: 5%; text-align: justify; text-transform: capitalize; font-family: Verdana, Geneva, Tahoma, sans-serif;">Nos ajude a tirar os livros cujos direitos sao reservados! Para tal, Clique no botao para nos enviar um email.</h3>
+        <button pButton type="button"   label="Escrever email" id="btEntar" (click)="enviarEmail()"></button>
+    </div>
+</div>
+
+<app-footer></app-footer>
+
+<!-- popup para mandar email -->
+<p-dialog [visible]="abirTextEmail"   [responsive]="true"  [closable]="false" [dismissableMask]="false">
+    <ng-template pTemplate="content"  >
+        
+        <form #formulario="ngForm" ngForm  >
+            <div class="p-formgrid p-grid" style="display: flex; flex-direction: column; ">
+               
+                <div class="p-field p-col" style="text-align:center; ">
+                    <label for="username" style="color: black;">Para: </label>
+                    <input type="text"  pInputText id="username" style="border: none;" disabled="true" placeholder="bibliotecafeng@uem.mz" />
+                </div>
+                <div class="p-field p-col" style="text-align:center;margin-top: 10%;">
+                    <label for="username" style="color: black;">De: </label>
+                    <input type="text" pInputText id="username" placeholder="seu email..." ngModel name="email" email [required]="true" #email="ngModel"/>
+                </div>
+                <div class="p-field p-col" style="text-align:center;margin-top: 10%;">
+                    <label for="username" style="color: black;">Assu: </label>
+                    <input type="text" pInputText id="username" placeholder="Assunto" ngModel name="subject"  [required]="true" #subject="ngModel"/>
+                </div>
+                <div class="p-field p-col" style="text-align:center; margin-top: 10%;">
+                   
+                    <textarea  [required]="true" placeholder="Insira o conteudo..." [rows]="10" [cols]="30" pInputTextarea  [required]="true" name="emailText" ngModel #emailText="ngModel" ></textarea>
+                </div>                
+            </div> 
+        </form>
+        <div class="p-field p-col" style=" margin-top: 5%;"  >
+            <button pButton type="submit" label="Cancelar" id="btEntar" class="bt-ent" (click)="cancelarEnviarEmail()"></button>&nbsp;&nbsp;&nbsp;
+            <button pButton type="submit" label="Enviar" id="btEntar" class="bt-ent" [disabled]="formulario.invalid" (click)="enviarEmailMessage(formulario)"></button>
+        </div>   
+    </ng-template>
+</p-dialog>

@@ -1,0 +1,135 @@
+/* You can add global styles to this file, and also import other style files */
+body
+{
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  margin:10px ;
+  background-color: #101e15;
+
+}
+
+label{
+  font-weight: bold;
+}
+@media (min-width:1200px){
+.container{
+  width: 1170px;
+  margin: 0 auto;
+}
+}
+
+.col-valor{
+  width: 120px;
+  text-align: right;
+}
+
+.col-data{
+  width: 120px;
+  text-align: center;
+}
+
+a{
+  text-decoration: none;
+  color: #d5e3da;
+}
+a :hover, a :focus{
+  text-decoration: underline;
+}
+h1{
+  color: #d5e3da ;
+}
+button{
+  background-color: #166d3c;
+}
+
+label
+{
+  color: #b2c7ba  ;
+}
+
+.perigo{
+  color: red;
+  border-width: 5px;
+
+}
+
+.navbar-menu{
+  margin-top: 0;
+  top: 0;
+  bottom: 0;
+  background-color:#166d3c;
+  list-style: none;
+  padding: 0;
+  width: 20%;
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  float: left;
+  left: 0;
+}
+.navbar-usuario{
+  margin-bottom: 15px ;
+  border-bottom: 1px solid #525151;
+  border-right: 1px solid #525151;
+  background-color: #113f25;
+  padding: 15px;
+  height: 95px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: white
+}
+
+.navbar-usuario .logo img{
+  margin: auto;
+  width: 65px;
+  height: 65px;
+  display: block;
+}
+
+.navbar-menuitem{
+  padding: 15px;
+  color:  white;
+  list-style: none;
+  font-size: 20px;
+}
+.navbar-menuitem-titulo{
+  padding: 15px;
+  color: #c0bbb7;
+  list-style: none;
+  font-size: 25px;
+
+}
+
+.navbar-menuitem a{
+  color: white;
+}
+
+.navbar-menuitem a:hover{
+  color:#c0bbb7;
+  font-weight: bold;
+}
+
+@media (min-width: 1200px) {
+  .form-container{ width: 370px; }
+  .navbar-lateral{ display: inherit !important; }
+}
+
+.content-page-container{
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  width: 80%;
+}
+
+.content-page-container-full{
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  width: 100%;
+
+}
+

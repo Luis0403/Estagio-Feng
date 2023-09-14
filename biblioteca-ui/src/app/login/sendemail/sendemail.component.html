@@ -1,0 +1,34 @@
+<p-dialog [visible]="sendEmailBtn"  [responsive]="true" [closable]="false">
+    <ng-template pTemplate="content"  >
+        
+        <form #formulario="ngForm" ngForm  class="grid login" (submit)="EnviarEmail(formulario.value.email)">
+          <div class="p-formgrid p-grid" style="display: flex; flex-direction: column; ">      
+                <div style="text-align:center;">
+                    <img src="assets/img/logo.png" alt="" style="width: 100px;height:100px">
+                
+                </div>
+        
+            <h4  *ngIf="isEmailSent">Enviamos-te um link no email que introduziu: {{mail}}</h4>
+            <h4  *ngIf="isEmailSent">Para resetar a sua palavrapasse</h4>
+        
+            <div *ngIf="showMessage">
+                <div>        
+                    
+                   
+                    <div class="p-field p-col" style="text-align:center; margin-top: 5%;">
+                        <label style="display:flex;">Introduza o email</label><br>
+                        <input type="text" pInputText id="username" placeholder="email..." ngModel name="email" [required]="true" #email="ngModel"/>
+                    </div>
+                    <app-mensagem-erro  [control] = "$any(email)" error="required" text="Informe o email" ></app-mensagem-erro>
+                </div>
+            
+            
+                <div  class="btnEntrar" style="text-align:center; margin-top: 5%;">
+                    <button  pButton pRipple id="btEntar"  label="Cancelar" (click)="cancelarSendEmail()"></button>&nbsp;&nbsp;
+                    <button  pButton pRipple id="btEntar" type="submit" label="Enviar" [disabled]="formulario.invalid"></button>
+                </div>
+            </div>
+           </div>  
+        </form>   
+    </ng-template>
+</p-dialog>

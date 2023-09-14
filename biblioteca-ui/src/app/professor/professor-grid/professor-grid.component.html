@@ -1,0 +1,48 @@
+<div class="grid">
+  <div class="col-12">
+    <p-table [value]="professores" [paginator]="true"[rows]="3" [responsive]="true" responsiveLayout="scroll" 
+      [globalFilterFields]="['numeroBi','nome','email','celular','areaDeEnsino']" #pesquisa
+      >
+
+             
+      <ng-template pTemplate="caption">
+          <div class="col-12">
+              <span class="p-input-icon-right">
+                  <i class="pi pi-filter" icon></i>
+                  <input  type="text" name="pesquisa" pInputText placeholder="pesquise...." 
+                  ngModel #pesqui="ngModel" 
+                  (input)="pesquisa.filterGlobal($any($event).target.value,'contains')"
+                  pTooltip="Pesquise o professor pelo nome, Numero de BI, Celular ou email" 
+                  tooltipPosition="right"
+                  />
+              </span>
+          </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+          <tr>
+              <th>Codigo</th>
+              <th>Nome</th>
+              <th>Area De Ensino</th>
+              <th>Instituicao De Ensino</th>
+              <th>Numero de BI</th>
+              <th>Data de Nascimento</th>
+              <th>Celular</th>
+              <th>Email</th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-professor>
+          <tr>
+            <td>{{professor.codigo}}</td>
+            <td>{{professor.nome}}</td>
+            <td>{{professor.areaDeEnsino}}</td>
+            <td>{{professor.instituicaoDeEnsino}}</td>
+            <td>{{professor.numeroBi}}</td>
+            <td>{{professor.dataNascimento|date: 'dd/MM/yyyy'}}</td>
+            <td>{{professor.celular}}</td>
+            <td>{{professor.utilizador.email}}</td>
+          </tr>
+      </ng-template>
+  </p-table>
+  </div>
+</div>
+

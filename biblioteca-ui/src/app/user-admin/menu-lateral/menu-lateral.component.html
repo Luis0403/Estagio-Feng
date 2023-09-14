@@ -1,0 +1,31 @@
+<ul [hidden]="exibindoMenu" class="navbar-menu">
+  <li class = "navbar-usuario">
+    <span class="logo">
+      <img src="assets/img/logo.png" alt="">
+    </span>
+  </li>
+  <li class = "navbar-menuitem-titulo" > <i class="pi pi-book"></i> Gerir Livros
+    <ul>
+      <li class = "navbar-menuitem"> <a routerLink="/admin/livros/listar"><i class="pi pi-list"></i> Listar </a></li>
+      <li class = "navbar-menuitem"> <a routerLink="/admin/livro/criar"> <i class="pi pi-plus"></i> Novo</a></li>
+    </ul>
+  </li>
+    <li class = "navbar-menuitem-titulo"><i class="pi pi-users"></i> Gerir Professores
+      <ul>
+        <li class = "navbar-menuitem">  <a routerLink="/admin/professores/listar"> <i class="pi pi-list"></i> Listar </a></li>
+        <li class = "navbar-menuitem"> <a routerLink="/admin/professor/criar"> <i class="pi pi-user-plus"></i> Novo</a></li>
+      </ul>
+    </li>
+    <li class = "navbar-menuitem-titulo"><i class="pi pi-users"></i> Gegir Bibliotecarios
+      <ul>
+        <li class = "navbar-menuitem"> <a routerLink="/admin/bibliotecario/listar">  <i class="pi pi-list"></i> Listar </a></li>
+        <li class = "navbar-menuitem"> <a routerLink="/admin/bibliotecario/criar"> <i class="pi pi-user-plus"></i> Novo</a></li>
+      </ul>
+    </li>
+    <li class = "navbar-menuitem-titulo"><i class="pi pi-users"></i> Estudantes
+      <ul>
+        <li class = "navbar-menuitem"> <a routerLink="/admin/estudantes/listar">  <i class="pi pi-list"></i> Listar </a></li>
+      </ul>
+    </li>
+
+</ul>

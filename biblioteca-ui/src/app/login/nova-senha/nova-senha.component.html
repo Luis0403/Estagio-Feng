@@ -1,0 +1,32 @@
+<p-dialog [visible]="true" [responsive]="true">
+    <ng-template pTemplate="content"  >
+        
+        <form #formulario="ngForm" ngForm  class="grid login" (submit)="trocarPassword(formulario.value.password,formulario.value.nova_password)">
+          <div class="p-formgrid p-grid" style="display: flex; flex-direction: column; ">      
+                <div style="text-align:center;">
+                    <img src="assets/img/logo.png" alt="" style="width: 100px;height:100px">
+                
+                </div>
+                    <p *ngIf="dadosIncorrectos" style="color: red;">Escreva a mesma password para ambos campos!</p>
+                    <div class="p-field p-col" style="text-align:center; margin-top: 8%;">
+                        <!-- <label >Nova Password </label><br> -->
+                        <p-password  [toggleMask]="true"  placeholder="nova password" [required]="true" ngModel name="password" #password="ngModel"></p-password>
+                     </div>
+                     <div class="p-field p-col" style="text-align:center; margin-top: 8%;">
+                        <!-- <label >Confirmacao da Nova Password </label><br> -->
+                        <p-password  [toggleMask]="true"  placeholder="confirmar password" [required]="true" ngModel name="nova_password" #pass_nova="ngModel"></p-password>
+                     </div>
+                    <!-- <app-mensagem-erro  [control] = "$any(email)" error="required" text="Informe " ></app-mensagem-erro> -->
+                
+            
+            
+                <div  class="btnEntrar" style="text-align:center; margin-top: 5%;">
+                    <button  pButton pRipple id="btEntar" type="submit" label="Enviar" [disabled]="formulario.invalid"></button>
+                </div>
+            </div>
+            
+        </form>   
+    </ng-template>
+</p-dialog>
+
+

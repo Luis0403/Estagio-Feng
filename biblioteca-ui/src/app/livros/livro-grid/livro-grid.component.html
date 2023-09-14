@@ -1,0 +1,82 @@
+<div class="grid">
+  <div class="col-12">
+    <p-table [value]="livros" [paginator]="true"[rows]="3" [responsive]="true" responsiveLayout="scroll" 
+     
+      [globalFilterFields]="['titulo','autor','editora','areaConhecimento','disciplina']" #pesquisa
+      >
+
+             
+      <ng-template pTemplate="caption">
+          <div class="col-12">
+              <span class="p-input-icon-right">
+                  <i class="pi pi-filter" icon></i>
+                  <input  type="text" name="pesquisa" pInputText placeholder="pesquise...." 
+                  ngModel #pesqui="ngModel" 
+                  (input)="pesquisa.filterGlobal($any($event).target.value,'contains')"
+                  pTooltip="Pesquise o livro por autor,editora, titulo ou disciplina" 
+                  tooltipPosition="right"
+                  />
+              </span>
+          </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+          <tr>
+              <th>Titulo</th>
+              <th>Autor</th>
+              <th>Disciplina</th>
+              <th>Editora</th>
+              <th>Area de Conhecimento</th>
+              <th>Accao</th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-livro>
+          <tr>
+            <td #livro>{{livro.titulo}}</td>
+            <td>{{livro.autor}}</td>
+            <td>{{livro.disciplina}}</td>
+            <td>{{livro.editora}}</td>
+            <td>{{livro.areaDeConhecimento}}</td>
+            <td>
+              <button pButton pRipple 
+                (click)="downloadLivro(livro.titulo)"
+                type="button" 
+                icon="pi pi-download" 
+                class="p-button-rounded p-button-success" 
+                pTooltip="Clique para Baixar este livro" 
+                tooltipPosition="right">
+              </button>
+              <button (click)="OpenPop()"
+                style="margin-left: 5px;" 
+                pButton pRipple type="button" 
+                icon="pi pi-eye" 
+                class="p-button-rounded p-button-warning" 
+                pTooltip="Clique para ver este livro"
+                tooltipPosition="right">
+              </button>
+              <button 
+                class="p-button-rounded p-button-warning"
+                icon="pi pi-trash" pButton 
+                style="background-color: rgb(196, 43, 43)" 
+                pTooltip="Clique para apagar este livro" 
+                tooltipPosition="right"
+                (click)="confirmaDeletar(livro.codigo,livro.titulo)"
+                *ngIf="userPermissao"
+                
+                >
+              </button>
+                       
+            </td>
+
+
+          </tr>
+         
+      </ng-template>
+  </p-table>
+
+  </div>
+</div>
+
+<p-dialog [(visible)]="showPop" [style]="{width: '85%', height: '90%'}" [modal]="true" styleClass="p-fluid" [blockScroll]="true">
+  <app-livro-view></app-livro-view>
+</p-dialog>
+

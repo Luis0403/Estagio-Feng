@@ -1,0 +1,50 @@
+
+.navbarTop{
+    background-color:#166d3c;
+    width: 100%;
+    height: 120px;
+    color: #d5e3da ;
+    top: 0;
+    right: 0;
+    left: 0;
+  }
+
+.itens{
+    float: right;
+    display: inline-flex;
+    margin-top: 20px;
+    margin-right: 10px;
+}
+  
+    #btEntar{
+        background-color: #101e15;
+        border:#166d3c;
+        color: white;
+    }
+
+    #btEntar:hover{
+        background-color: #053d19;
+    }
+
+  .btao{
+    margin-right:5px ;
+   }
+
+
+  @media (max-width:299px) {
+    
+    .itens{
+        margin-top: -10px;
+        display: flex;
+        flex-direction: column;
+        }
+
+    .btao{
+        margin-top:15px ;
+        margin-right:0px ;
+        margin-bottom:5px;
+    }
+  }
+  
+  
+  
